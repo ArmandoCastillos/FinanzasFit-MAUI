@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.GastoDetallePage"
+             Title="Gasto">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+
+            <Label Text="Descripción" />
+            <Entry x:Name="txtDescripcion" Placeholder="Ej. Tacos, camión, Netflix" />
+
+            <Label Text="Monto ($)" />
+            <Entry x:Name="txtMonto" Placeholder="Ej. 150" Keyboard="Numeric"
+                   TextChanged="OnMontoTextChanged" />
+            <Label x:Name="lblErrorMonto" Text="Escribe un monto válido mayor a 0"
+                   TextColor="Red" FontSize="12" IsVisible="False" />
+
+            <Label Text="Categoría" />
+            <Picker x:Name="pickerCategoria" Title="Selecciona una categoría" />
+
+            <Label Text="Fecha" />
+            <DatePicker x:Name="dpFecha" Format="dd/MM/yyyy" />
+
+            <Button x:Name="btnGuardar" Text="Guardar" Margin="0,15,0,0"
+                    IsEnabled="False" Clicked="OnGuardarClicked" />
+            <Button x:Name="btnEliminar" Text="Eliminar gasto" BackgroundColor="#C62828"
+                    TextColor="White" IsVisible="False" Clicked="OnEliminarClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

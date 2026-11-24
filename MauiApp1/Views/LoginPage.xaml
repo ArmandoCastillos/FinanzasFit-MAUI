@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.LoginPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{AppThemeBinding Light=#F5F7FA, Dark=#121212}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,50" Spacing="25" VerticalOptions="Center">
+
+            <Image Source="logo.svg"
+                   HeightRequest="90"
+                   HorizontalOptions="Center" />
+
+            <Label Text="FinanzasFit"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="{StaticResource Primary}" />
+
+            <!-- Iniciar sesion -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,10,0,5">
+                <Button x:Name="BtnTabLogin"
+                        Grid.Column="0"
+                        Text="Iniciar Sesión"
+                        Clicked="OnTabLoginClicked"
+                        CornerRadius="10"
+                        FontAttributes="Bold" />
+
+                <Button x:Name="BtnTabRegistro"
+                        Grid.Column="1"
+                        Text="Registrarte"
+                        Clicked="OnTabRegistroClicked"
+                        CornerRadius="10"
+                        FontAttributes="Bold" />
+            </Grid>
+
+            <VerticalStackLayout x:Name="PanelLogin" Spacing="18" IsVisible="True">
+                
+                <VerticalStackLayout Spacing="2">
+                    <Entry x:Name="EntryLoginUsuario"
+                           Placeholder="Usuario"
+                           ReturnType="Next" />
+                    <BoxView HeightRequest="1.5" Color="{StaticResource Primary}" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="2">
+                    <Entry x:Name="EntryLoginContrasena"
+                           Placeholder="Contraseña"
+                           IsPassword="True"
+                           ReturnType="Done" />
+                    <BoxView HeightRequest="1.5" Color="{StaticResource Primary}" />
+                </VerticalStackLayout>
+
+                <Button Text="Entrar"
+                        Clicked="OnIniciarSesionClicked"
+                        HeightRequest="50"
+                        CornerRadius="12"
+                        FontAttributes="Bold"
+                        Margin="0,15,0,0" />
+            </VerticalStackLayout>
+
+            <!-- Registrarte-->
+            <VerticalStackLayout x:Name="PanelRegistro" Spacing="18" IsVisible="False">
+
+                <VerticalStackLayout Spacing="2">
+                    <Entry x:Name="EntryRegNombre"
+                           Placeholder="Tu nombre"
+                           ReturnType="Next" />
+                    <BoxView HeightRequest="1.5" Color="{StaticResource Primary}" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="2">
+                    <Entry x:Name="EntryRegContrasena"
+                           Placeholder="Tu contraseña"
+                           IsPassword="True"
+                           ReturnType="Next" />
+                    <BoxView HeightRequest="1.5" Color="{StaticResource Primary}" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="2">
+                    <Entry x:Name="EntryRegConfirmar"
+                           Placeholder="Confirmar contraseña"
+                           IsPassword="True"
+                           ReturnType="Done" />
+                    <BoxView HeightRequest="1.5" Color="{StaticResource Primary}" />
+                </VerticalStackLayout>
+
+                <Button Text="Crear cuenta"
+                        Clicked="OnRegistrarClicked"
+                        HeightRequest="50"
+                        CornerRadius="12"
+                        FontAttributes="Bold"
+                        Margin="0,15,0,0" />
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

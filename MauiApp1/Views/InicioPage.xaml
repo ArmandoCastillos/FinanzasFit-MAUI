@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.InicioPage"
+             Title="Inicio">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Se muestra cuando todavía no hay presupuesto -->
+            <VerticalStackLayout x:Name="panelVacio" IsVisible="False" Spacing="20">
+                <Image Source="logo.png" HeightRequest="150" Aspect="AspectFit" />
+                <Label Text="Aún no tienes un presupuesto"
+                       Style="{StaticResource SubHeadline}" />
+                <Button Text="Crear presupuesto" Clicked="OnCrearPresupuestoClicked" />
+            </VerticalStackLayout>
+
+            <!-- Resumen del presupuesto activo -->
+            <VerticalStackLayout x:Name="panelResumen" IsVisible="False" Spacing="12">
+
+                <Label x:Name="lblNombre" Style="{StaticResource Headline}" />
+
+                <Label Text="Te quedan" HorizontalOptions="Center" />
+                <Label x:Name="lblRestante" FontSize="32" FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+                <Label x:Name="lblGastado" HorizontalOptions="Center" />
+
+                <Label Text="Dinero gastado" Margin="0,10,0,0" />
+                <ProgressBar x:Name="barDinero" />
+
+                <Label x:Name="lblTiempo" Margin="0,10,0,0" />
+                <ProgressBar x:Name="barTiempo" ProgressColor="Gray" />
+
+                <!-- Recomendación del asesor; el color cambia según cómo vas -->
+                <Border x:Name="cuadroConsejo" Padding="15" Margin="0,10,0,0"
+                        StrokeThickness="0" StrokeShape="RoundRectangle 10">
+                    <Label x:Name="lblConsejo" TextColor="White" />
+                </Border>
+
+                <Button Text="Registrar gasto" Clicked="OnRegistrarGastoClicked" />
+                <Button Text="Ver recomendación" Clicked="OnVerRecomendacionClicked" />
+              
+            </VerticalStackLayout>
+        
+                <Button Text="Cerrar sesión"
+                Clicked="OnCerrarSesionClicked"
+                BackgroundColor="#E53935"
+                TextColor="White"
+                CornerRadius="12"
+                HeightRequest="48"
+                FontAttributes="Bold"
+                Margin="0,20,0,10" />
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiApp1.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:MauiApp1.Views"
+    Title="FinanzasFit"
+    Shell.FlyoutBehavior="Disabled">
+
+    <!-- Navegación principal por pestañas -->
+    <TabBar>
+        <ShellContent
+            Title="Inicio"
+            Icon="icono_inicio.png"
+            ContentTemplate="{DataTemplate views:InicioPage}"
+            Route="InicioPage" />
+
+        <ShellContent
+            Title="Gastos"
+            Icon="icono_gastos.png"
+            ContentTemplate="{DataTemplate views:GastosPage}"
+            Route="GastosPage" />
+
+        <ShellContent
+            Title="Presupuesto"
+            Icon="icono_presupuesto.png"
+            ContentTemplate="{DataTemplate views:PresupuestoPage}"
+            Route="PresupuestoPage" />
+    </TabBar>
+
+</Shell>

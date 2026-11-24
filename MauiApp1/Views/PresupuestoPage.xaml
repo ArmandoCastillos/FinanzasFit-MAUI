@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.PresupuestoPage"
+             Title="Mis Presupuestos">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- 1. SELECTOR DE PRESUPUESTO ACTIVO -->
+            <Border StrokeShape="RoundRectangle 12"
+                    StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light=#E0E0E0, Dark=#333333}"
+                    BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}"
+                    Padding="15">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,2" Radius="6" Opacity="0.1" />
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Presupuesto / Cuenta activa"
+                           FontAttributes="Bold"
+                           FontSize="16" />
+
+                    <Picker x:Name="PickerPresupuestos"
+                            Title="Selecciona un presupuesto"
+                            SelectedIndexChanged="OnPresupuestoSeleccionado" />
+
+                    <Label x:Name="LblSaldoActual"
+                           Text="Disponible: $0.00"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource Primary}" />
+
+                    <Label x:Name="LblPeriodoActual"
+                           Text=""
+                           FontSize="13"
+                           TextColor="Gray"
+                           IsVisible="False" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border x:Name="FrameAbonar"
+                    StrokeShape="RoundRectangle 12"
+                    StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light=#E0E0E0, Dark=#333333}"
+                    BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}"
+                    Padding="15"
+                    IsVisible="False">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,2" Radius="6" Opacity="0.1" />
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Agregar dinero"
+                           FontAttributes="Bold"
+                           FontSize="16" />
+
+                    <Label Text="Suma dinero extra al presupuesto que tienes seleccionado arriba:"
+                           FontSize="13"
+                           TextColor="Gray" />
+
+                    <Entry x:Name="EntryMontoAbono"
+                           Placeholder="Monto a agregar (ej. 500)"
+                           Keyboard="Numeric" />
+
+                    <Button Text="+ Agregar saldo a esta cuenta"
+                            Clicked="OnAbonarClicked"
+                            BackgroundColor="#2E7D32"
+                            TextColor="White"
+                            CornerRadius="10"
+                            FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Crea mas presupuestos -->
+            <Border StrokeShape="RoundRectangle 12"
+                    StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light=#E0E0E0, Dark=#333333}"
+                    BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}"
+                    Padding="15">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,2" Radius="6" Opacity="0.1" />
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Crear nuevo presupuesto"
+                           FontAttributes="Bold"
+                           FontSize="16" />
+
+                    <Entry x:Name="EntryNuevoNombre"
+                           Placeholder="Nombre (ej. Ahorro Moto, Gastos Casa)" />
+
+                    <Entry x:Name="EntryNuevoMonto"
+                           Placeholder="Monto inicial (ej. 3000)"
+                           Keyboard="Numeric" />
+
+                    <Picker x:Name="PickerPeriodo"
+                            Title="Selecciona el periodo">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Día</x:String>
+                                <x:String>Semana</x:String>
+                                <x:String>Mes</x:String>
+                                <x:String>Año</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <Picker x:Name="PickerTipoGasto"
+                            Title="Tipo de gasto">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>General</x:String>
+                                <x:String>Comida</x:String>
+                                <x:String>Transporte</x:String>
+                                <x:String>Servicios</x:String>
+                                <x:String>Entretenimiento</x:String>
+                                <x:String>Salud</x:String>
+                                <x:String>Ahorro</x:String>
+                                <x:String>Otros</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <Button Text="Crear nuevo presupuesto"
+                            Clicked="OnCrearNuevoClicked"
+                            CornerRadius="10"
+                            FontAttributes="Bold" />
+
+                    <Button x:Name="BtnEliminarActual"
+                            Text="Eliminar presupuesto seleccionado"
+                            Clicked="OnEliminarClicked"
+                            BackgroundColor="#C62828"
+                            TextColor="White"
+                            CornerRadius="10"
+                            IsVisible="False" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
